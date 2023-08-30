@@ -70,6 +70,7 @@ import { interval } from 'rxjs';
 // Check For Updates
 export class AppComponent implements OnInit {
   constructor(private swUpdate: SwUpdate, private appRef: ApplicationRef) {
+    this.checkUpdate();
     this.updateClient();
   }
   ngOnInit(): void {}
@@ -100,6 +101,8 @@ export class AppComponent implements OnInit {
       );
     });
   }
+
+  // Check for updates will notify this.swUpdate.available th
   checkUpdate() {
     this.appRef.isStable.subscribe((resp) => {
       if (resp) {
