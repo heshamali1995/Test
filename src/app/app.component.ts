@@ -47,12 +47,17 @@ export class AppComponent implements OnInit {
         'available',
         JSON.stringify(event.available)
       );
+      if (confirm('Update Available For the app please confirm')) {
+        this.swUpdate.activateUpdate().then(() => {
+          window.location.reload();
+        });
+      }
     });
     this.swUpdate.activated.subscribe((event) => {
       console.log(
-        'Current: ',
+        'Current2: ',
         JSON.stringify(event.previous),
-        'Available: ',
+        'Available2: ',
         JSON.stringify(event.current)
       );
     });
