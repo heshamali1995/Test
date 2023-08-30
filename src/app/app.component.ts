@@ -20,8 +20,9 @@ export class AppComponent {
         })
       );
     }
-    this.swUpdate.available.subscribe(() => {
-      this.hasUpdate = true;
+    this.swUpdate.available.subscribe((event) => {
+      // this.hasUpdate = true;
+      console.log(event);
     });
   }
 
