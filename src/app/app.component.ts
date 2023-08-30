@@ -13,14 +13,12 @@ export class AppComponent {
 
   ngOnInit(): void {
     // check for platform update
-    if (!this.swUpdate.isEnabled) {
-      console.log('Not Enabled');
-      return;
-      // interval(600).subscribe(() =>
-      //   this.swUpdate.checkForUpdate().then((resp) => {
-      //     console.log(resp);
-      //   })
-      // );
+    if (this.swUpdate.isEnabled) {
+      interval(600).subscribe(() =>
+        this.swUpdate.checkForUpdate().then((resp) => {
+          console.log(resp);
+        })
+      );
     }
     this.swUpdate.available.subscribe((event) => {
       this.hasUpdate = true;
