@@ -31,7 +31,7 @@ import { interval } from 'rxjs';
   }
 } */
 
-// Activated Updates With Reloading The Page
+// 1 => Activated Updates With Reloading The Page
 
 /* export class AppComponent implements OnInit {
   constructor(private swUpdate: SwUpdate) {
@@ -67,10 +67,9 @@ import { interval } from 'rxjs';
   }
 } */
 
-// Check For Updates
+// 2 => Check For Updates
 export class AppComponent implements OnInit {
   constructor(private swUpdate: SwUpdate, private appRef: ApplicationRef) {
-    this.checkUpdate();
     this.updateClient();
   }
   ngOnInit(): void {}
@@ -92,18 +91,18 @@ export class AppComponent implements OnInit {
         });
       }
     });
-    this.swUpdate.activated.subscribe((event) => {
+    /*     this.swUpdate.activated.subscribe((event) => {
       console.log(
         'Current2: ',
         JSON.stringify(event.previous),
         'Available2: ',
         JSON.stringify(event.current)
       );
-    });
+    }); */
   }
 
-  // Check for updates will notify this.swUpdate.available
-  checkUpdate() {
+  // 3 => Check for updates will notify this.swUpdate.available
+  /*   checkUpdate() {
     this.appRef.isStable.subscribe((resp) => {
       if (resp) {
         const timeInterval = interval(20000);
@@ -113,5 +112,5 @@ export class AppComponent implements OnInit {
         });
       }
     });
-  }
+  } */
 }
