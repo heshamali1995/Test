@@ -86,8 +86,8 @@ export class AppComponent implements OnInit {
         JSON.stringify(event.available)
       );
       if (confirm('Update Available For the app please confirm')) {
-        this.swUpdate.activateUpdate().then(() => {
-          window.location.reload();
+        this.swUpdate.activateUpdate().then((resp) => {
+          console.log(resp);
         });
       }
     });
