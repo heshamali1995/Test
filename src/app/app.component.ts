@@ -15,7 +15,7 @@ export class AppComponent {
     // check for platform update
     if (this.swUpdate.isEnabled) {
       interval(600).subscribe(() =>
-        this.swUpdate.checkForUpdate().then((resp) => {
+        this.swUpdate.activateUpdate().then((resp) => {
           console.log(resp);
         })
       );
