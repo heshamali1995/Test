@@ -31,7 +31,9 @@ import { interval } from 'rxjs';
   }
 } */
 export class AppComponent implements OnInit {
-  constructor(private swUpdate: SwUpdate) {}
+  constructor(private swUpdate: SwUpdate) {
+    this.updateClient();
+  }
   ngOnInit(): void {}
   updateClient() {
     if (!this.swUpdate.isEnabled) {
