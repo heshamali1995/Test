@@ -23,7 +23,7 @@ export class AppComponent {
       // );
     }
     this.swUpdate.available.subscribe((event) => {
-      // this.hasUpdate = true;
+      this.hasUpdate = true;
       console.log(`Current `, event.current, ' Available ', event.available);
     });
   }
