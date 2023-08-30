@@ -8,23 +8,28 @@ import { interval } from 'rxjs';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  // For Checking Updated Every Specific Time
   hasUpdate = false;
   constructor(private swUpdate: SwUpdate) {}
 
   ngOnInit(): void {
     // check for platform update
-    /*     if (this.swUpdate.isEnabled) {
+    if (this.swUpdate.isEnabled) {
       interval(600).subscribe(() =>
-        this.swUpdate.checkForUpdate().then((resp) => {
-          console.log(resp);
+        this.swUpdate.checkForUpdate().then((event) => {
+          console.log(`Check For Updates ${event}`);
         })
       );
     }
     this.swUpdate.available.subscribe((event) => {
-      this.hasUpdate = true;
       console.log(`Current `, event.current, ' Available ', event.available);
-    }); */
-    if (!this.swUpdate.isEnabled) {
+    });
+  }
+
+  reloadSite(): void {
+    location.reload();
+  }
+  /*     if (!this.swUpdate.isEnabled) {
       console.log('Not Enabled');
       return;
     }
@@ -35,10 +40,5 @@ export class AppComponent {
           this.hasUpdate = true;
         });
       }
-    });
-  }
-
-  reloadSite(): void {
-    location.reload();
-  }
+    }); */
 }
