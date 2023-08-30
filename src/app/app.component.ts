@@ -48,5 +48,13 @@ export class AppComponent implements OnInit {
         JSON.stringify(event.available)
       );
     });
+    this.swUpdate.activated.subscribe((event) => {
+      console.log(
+        'Current: ',
+        JSON.stringify(event.previous),
+        'Available: ',
+        JSON.stringify(event.current)
+      );
+    });
   }
 }
