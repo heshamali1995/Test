@@ -13,9 +13,9 @@ export class AppComponent {
 
   ngOnInit(): void {
     // check for platform update
-    if (this.swUpdate.isEnabled) {
+    /*     if (this.swUpdate.isEnabled) {
       interval(600).subscribe(() =>
-        this.swUpdate.activateUpdate().then((resp) => {
+        this.swUpdate.checkForUpdate().then((resp) => {
           console.log(resp);
         })
       );
@@ -23,6 +23,18 @@ export class AppComponent {
     this.swUpdate.available.subscribe((event) => {
       this.hasUpdate = true;
       console.log(`Current `, event.current, ' Available ', event.available);
+    }); */
+    if (!this.swUpdate.isEnabled) {
+      console.log('Not Enabled');
+      return;
+    }
+    this.swUpdate.available.subscribe((event) => {
+      console.log(`Current: ${event.current}, Available: ${event.available}`);
+      if (confirm('Update is Available')) {
+        this.swUpdate.activateUpdate().then(() => {
+          this.hasUpdate = true;
+        });
+      }
     });
   }
 
