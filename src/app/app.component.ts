@@ -87,7 +87,7 @@ export class AppComponent implements OnInit {
       );
       if (confirm('Update Available For the app please confirm')) {
         this.swUpdate.activateUpdate().then((resp) => {
-          console.log(resp);
+          window.location.reload();
         });
       }
     });
