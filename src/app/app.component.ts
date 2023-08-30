@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SwUpdate } from '@angular/service-worker';
 import { interval } from 'rxjs';
 
@@ -7,7 +7,7 @@ import { interval } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+/* export class AppComponent {
   // For Checking Updated Every Specific Time
   hasUpdate = false;
   constructor(private swUpdate: SwUpdate) {}
@@ -29,16 +29,17 @@ export class AppComponent {
   reloadSite(): void {
     location.reload();
   }
-  /*     if (!this.swUpdate.isEnabled) {
+} */
+export class AppComponent implements OnInit {
+  constructor(private swUpdate: SwUpdate) {}
+  ngOnInit(): void {}
+  updateClient() {
+    if (!this.swUpdate.isEnabled) {
       console.log('Not Enabled');
       return;
     }
     this.swUpdate.available.subscribe((event) => {
       console.log(`Current: ${event.current}, Available: ${event.available}`);
-      if (confirm('Update is Available')) {
-        this.swUpdate.activateUpdate().then(() => {
-          this.hasUpdate = true;
-        });
-      }
-    }); */
+    });
+  }
 }
