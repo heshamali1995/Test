@@ -106,7 +106,7 @@ export class AppComponent implements OnInit {
   checkUpdate() {
     this.appRef.isStable.subscribe((resp) => {
       if (resp) {
-        const timeInterval = interval(5000);
+        const timeInterval = interval(20000);
         timeInterval.subscribe(() => {
           this.swUpdate.checkForUpdate().then(() => console.log('Checked'));
           console.log('Update Checked');
