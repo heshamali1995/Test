@@ -24,10 +24,6 @@ export class AppComponent {
     this.swUpdate.available.subscribe((event) => {
       console.log(`Current `, event.current, ' Available ', event.available);
       this.hasUpdate = true;
-      if (this.hasUpdate == true) {
-        window.alert('New Update');
-        this.reloadSite();
-      }
     });
   }
 
