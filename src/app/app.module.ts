@@ -4,21 +4,29 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
+import { ServersComponent } from './servers/servers.component';
+import { AppRoutingModule } from 'src/app-routing.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent,
+    HomeComponent,
+    ServersComponent,
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
-    })
+      registrationStrategy: 'registerWhenStable:30000',
+    }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
