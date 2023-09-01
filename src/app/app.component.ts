@@ -7,8 +7,19 @@ import { interval } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
+
+/*----------------  
+  IF THERE IS A CHANGE IN THE SERVICE WORKER ( APP CLASS ) 
+  PUSH THE CHANGES FIRST BEFORE WE MAKE ANY CHANGE IN OUR ACTUAL DOM
+---------------------*/
+
+/*
+  1 => We make alot of changes scenario: Detect Automatically if there is any change at specific time
+    a => Uncomment the button in home.component.html if commented
+    b => The Site keeps sending requests
+    c => Check the changed Hash in the console
+*/
 export class AppComponent {
-  // For Checking Updated Every Specific Time
   hasUpdate = false;
   constructor(private swUpdate: SwUpdate) {}
 
@@ -32,7 +43,12 @@ export class AppComponent {
   }
 }
 
-// 1 => Activated Updates With Reloading The Page
+/*
+  2 => We don't make alot of changes scenario: Detect The Change Whenever the client reloads the site
+    a => Comment the button in home.component.html
+    b => The Site requests a new page from the server
+    c => Check the changed Hash in the console
+*/
 
 /* export class AppComponent implements OnInit {
   constructor(private swUpdate: SwUpdate) {
@@ -54,62 +70,6 @@ export class AppComponent {
       if (confirm('Update Available For the app please confirm')) {
         this.swUpdate.activateUpdate().then(() => {
           window.location.reload();
-        });
-      }
-    });
-    this.swUpdate.activated.subscribe((event) => {
-      console.log(
-        'Current2: ',
-        JSON.stringify(event.previous),
-        'Available2: ',
-        JSON.stringify(event.current)
-      );
-    });
-  }
-} */
-
-// 2 => Check For Updates
-/* export class AppComponent implements OnInit {
-  constructor(private swUpdate: SwUpdate, private appRef: ApplicationRef) {
-    this.updateClient();
-  }
-  ngOnInit(): void {}
-  updateClient() {
-    if (!this.swUpdate.isEnabled) {
-      console.log('Not Enabled');
-      return;
-    }
-    this.swUpdate.available.subscribe((event) => {
-      console.log(
-        'current: ',
-        JSON.stringify(event.current),
-        'available',
-        JSON.stringify(event.available)
-      );
-      if (confirm('Update Available For the app please confirm')) {
-        this.swUpdate.activateUpdate().then((resp) => {
-          window.location.reload();
-        });
-      }
-    });
-            this.swUpdate.activated.subscribe((event) => {
-      console.log(
-        'Current2: ',
-        JSON.stringify(event.previous),
-        'Available2: ',
-        JSON.stringify(event.current)
-      );
-    });
-  }
-
-  // 3 => Check for updates will notify this.swUpdate.available
-      checkUpdate() {
-    this.appRef.isStable.subscribe((resp) => {
-      if (resp) {
-        const timeInterval = interval(20000);
-        timeInterval.subscribe(() => {
-          this.swUpdate.checkForUpdate().then(() => console.log('Checked'));
-          console.log('Update Checked');
         });
       }
     });
