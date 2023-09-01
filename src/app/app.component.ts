@@ -7,7 +7,7 @@ import { interval } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-/* export class AppComponent {
+export class AppComponent {
   // For Checking Updated Every Specific Time
   hasUpdate = false;
   constructor(private swUpdate: SwUpdate) {}
@@ -30,7 +30,7 @@ import { interval } from 'rxjs';
   reloadSite(): void {
     location.reload();
   }
-} */
+}
 
 // 1 => Activated Updates With Reloading The Page
 
@@ -69,7 +69,7 @@ import { interval } from 'rxjs';
 } */
 
 // 2 => Check For Updates
-export class AppComponent implements OnInit {
+/* export class AppComponent implements OnInit {
   constructor(private swUpdate: SwUpdate, private appRef: ApplicationRef) {
     this.updateClient();
   }
@@ -92,18 +92,18 @@ export class AppComponent implements OnInit {
         });
       }
     });
-    /*         this.swUpdate.activated.subscribe((event) => {
+            this.swUpdate.activated.subscribe((event) => {
       console.log(
         'Current2: ',
         JSON.stringify(event.previous),
         'Available2: ',
         JSON.stringify(event.current)
       );
-    }); */
+    });
   }
 
   // 3 => Check for updates will notify this.swUpdate.available
-  /*     checkUpdate() {
+      checkUpdate() {
     this.appRef.isStable.subscribe((resp) => {
       if (resp) {
         const timeInterval = interval(20000);
@@ -113,5 +113,5 @@ export class AppComponent implements OnInit {
         });
       }
     });
-  } */
-}
+  }
+} */
